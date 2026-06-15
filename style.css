@@ -1,0 +1,387 @@
+/* Üldine lehe välimus: tume luksuslik taust, hele tekst ja sujuv kerimine */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #f5ecd9;
+  background:
+    radial-gradient(circle at top, rgba(212, 175, 55, 0.12), transparent 28%),
+    linear-gradient(180deg, #090f18 0%, #111827 50%, #06090f 100%);
+  min-height: 100vh;
+}
+
+/* Kõik lingid pärivad vaikimisi oma ümbruse värvi */
+a {
+  color: inherit;
+}
+
+/* Ülemine menüü: läbikumav tume taust ja kuldne piir */
+.luxury-navbar {
+  background: rgba(8, 12, 20, 0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+/* Brändi nimi menüüs */
+.navbar-brand {
+  color: #f7e7bf;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Hover-efekt nr 1: brändi nimi muutub kuldsemaks */
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: #d4af37;
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+}
+
+/* Menüü lingid */
+.nav-link {
+  color: rgba(245, 236, 217, 0.82);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+/* Hover-efekt nr 2: menüü link muutub kuldseks ja liigub veidi üles */
+.nav-link:hover,
+.nav-link:focus,
+.nav-link.active {
+  color: #d4af37 !important;
+  transform: translateY(-2px);
+}
+
+/* Ühine vertikaalne vahe sektsioonidele */
+.section-space {
+  padding: 6rem 0;
+}
+
+/* Hero sektsioon: taustapilt, kõrgus ja sisu paigutus */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 6rem;
+  background-image: url("assets/main3.webp");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* Overlay tagab teksti loetavuse pildi peal */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 6, 10, 0.68), rgba(6, 8, 14, 0.82));
+}
+
+/* Väike esiletõstetud tekst sektsioonide kohal */
+.eyebrow {
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.8rem;
+}
+
+/* Hero sektsiooni sissejuhatav tekst */
+.hero-copy,
+.section-intro-text,
+.content-card p,
+.gallery-card p,
+.luxury-footer p {
+  color: rgba(245, 236, 217, 0.86);
+  line-height: 1.8;
+}
+
+/* Sisukaardid tekstiploki, vormi ja video ümber */
+.content-card,
+.gallery-card {
+  background: linear-gradient(180deg, rgba(19, 26, 38, 0.95), rgba(10, 14, 22, 0.96));
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.32);
+}
+
+/* Tekstiploki sektsioon */
+.content-section {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(212, 175, 55, 0.03));
+}
+
+/* Galerii kaartide välimus */
+.gallery-card {
+  overflow: hidden;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Horisontaalne parfüümiperede riba, kus kaardid asuvad kõrvuti */
+.perfume-family-strip {
+  display: flex;
+  gap: 0.75rem;
+  min-height: 520px;
+}
+
+/* Üksik expanding-card tüüpi paneel */
+.family-panel {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: flex 0.45s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+/* Hover või klaviatuurifookus laiendab aktiivset kaarti */
+.family-panel:hover,
+.family-panel:focus-visible {
+  flex: 3 1 0;
+  transform: translateY(-4px);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.45);
+  outline: none;
+}
+
+/* Tume overlay muudab teksti loetavaks */
+.family-panel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 10, 12, 0.25), rgba(6, 7, 10, 0.82));
+}
+
+/* Paneeli tekstiosa asub allservas */
+.family-panel-content {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  padding: 1.5rem;
+  color: #fff8ea;
+}
+
+/* Vaikimisi näeb ainult pealkirja ja märgist */
+.family-panel-content p {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(14px);
+  transition: all 0.35s ease;
+}
+
+/* Hoveril avaneb kirjeldus nähtavale */
+.family-panel:hover .family-panel-content p,
+.family-panel:focus-visible .family-panel-content p {
+  max-height: 220px;
+  opacity: 1;
+  transform: translateY(0);
+  margin-bottom: 0;
+}
+
+/* Märgis aitab peresid visuaalselt eristada */
+.family-badge {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.16);
+  border: 1px solid rgba(212, 175, 55, 0.38);
+  color: #f1d27a;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Taustapildid eri lõhnaperekondadele */
+.family-tsitrus {
+  background-image: url("assets/citrus.webp");
+}
+
+.family-aromaatiline {
+  background-image: url("assets/aromatic.webp");
+}
+
+.family-puit {
+  background-image: url("assets/woody.webp");
+}
+
+.family-küpre {
+  background-image: url("assets/chypre.webp");
+}
+
+.family-lilleline {
+  background-image: url("assets/floral.webp");
+}
+
+.family-amber {
+  background-image: url("assets/amber.webp");
+}
+
+/* Hover-efekt nr 3: galerii kaart tõuseb ja saab tugevama varju */
+.gallery-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 26px 70px rgba(0, 0, 0, 0.4);
+}
+
+/* Galerii piltide ühtlane kõrgus */
+.gallery-image {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+/* Kuldsed tegevusnupud */
+.btn-gold {
+  background: linear-gradient(135deg, #d4af37, #f0d98a);
+  border: none;
+  color: #111111;
+  font-weight: 700;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+/* Hover-efekt nr 4: nupp kasvab kergelt ja saab sära */
+.btn-gold:hover,
+.btn-gold:focus {
+  color: #111111;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.3);
+}
+
+/* Välisviide sisuplokis */
+.external-link {
+  color: #f3d77b;
+  text-decoration: underline;
+  text-decoration-color: rgba(212, 175, 55, 0.6);
+  transition: all 0.3s ease;
+}
+
+/* Hover-efekt nr 5: välisviide muutub heledamaks */
+.external-link:hover,
+.external-link:focus {
+  color: #fff2c7;
+}
+
+/* Sotsiaalmeedia lingid kujundatud pill-kujul */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.1rem;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* Hover-efekt nr 6: sotsiaalmeedia nupp muutub kuldseks */
+.social-link:hover,
+.social-link:focus {
+  background-color: #d4af37;
+  color: #111111;
+  transform: translateY(-2px);
+}
+
+/* Vormi sisestusväljad */
+.luxury-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  color: #f5ecd9;
+  border-radius: 1rem;
+  padding: 0.95rem 1rem;
+}
+
+/* Väljade fookus peab olema hästi nähtav ligipääsetavuse jaoks */
+.luxury-input:focus {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f5ecd9;
+  border-color: rgba(212, 175, 55, 0.8);
+  box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.15);
+}
+
+.luxury-input::placeholder {
+  color: rgba(245, 236, 217, 0.55);
+}
+
+/* Pealkirjad ja vormi sildid */
+.form-label,
+.content-card h2,
+.gallery-card h3,
+.hero-section h1 {
+  color: #fff8ea;
+}
+
+/* Kontaktiploki ja jaluse visuaalne eristus */
+.contact-section,
+.luxury-footer {
+  background: rgba(6, 9, 15, 0.65);
+}
+
+.luxury-footer {
+  border-top: 1px solid rgba(212, 175, 55, 0.18);
+}
+
+/* Mobiilivaate kohandused */
+@media (max-width: 991.98px) {
+  .section-space {
+    padding: 4.5rem 0;
+  }
+
+  .hero-section {
+    min-height: auto;
+    padding-top: 7rem;
+    padding-bottom: 5rem;
+  }
+
+  .perfume-family-strip {
+    min-height: 460px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .gallery-image {
+    height: 260px;
+  }
+
+  .perfume-family-strip {
+    gap: 0.5rem;
+    min-height: 380px;
+  }
+
+  .family-panel-content {
+    padding: 1rem;
+  }
+
+  .family-panel-content h3 {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .section-space {
+    padding: 4rem 0;
+  }
+
+  .hero-section h1 {
+    font-size: 2.4rem;
+  }
+
+  .perfume-family-strip {
+    min-height: 320px;
+  }
+
+  .family-panel:hover,
+  .family-panel:focus-visible {
+    flex: 2.4 1 0;
+  }
+
+  .family-badge {
+    font-size: 0.72rem;
+    padding: 0.35rem 0.7rem;
+  }
+}
